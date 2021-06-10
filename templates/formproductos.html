@@ -5,17 +5,7 @@
 {% endblock %} 
 {% block contenido %} 
   
-<form method="POST" class="post-form" enctype="multipart/form-data">  
-    {% csrf_token %}
-    
-    {% if txtId %}
-    <div class="alert alert-danger alert-dismissible">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        {{ txtId }}
-    </div>
-    <br>
-    {% endif %}
-
+<form method="POST">
     <div class="row justify-content-center">
         <div class="col-6">
     <div class="form-group">
