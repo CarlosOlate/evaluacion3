@@ -17,9 +17,6 @@ class Producto(models.Model):
     precioVenta = models.IntegerField()
     marca       = models.CharField(max_length=50)
     categoria   = models.ForeignKey(Categoria, on_delete=models.CASCADE)
-
-    class Meta:  
-        db_table = "producto"  
     def __str__(self):
         return self.descripcion + " " + self.marca
 
