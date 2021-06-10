@@ -1,0 +1,48 @@
+{% extends 'plantillaBase.html' %} 
+{% block titulo %} 
+{{ 'Registro de usuarios' }}
+<hr>
+<h4>Usuarios registrados en e-Commerse:</h4>
+<br>
+Agregar cliente: <a href="{% url 'formusuario' %}" class="btn btn-outline-primary">Agregar</a>
+<br> 
+{%endblock%} 
+{% block contenido %} 
+{% if listado %}
+
+<table class="table">
+    <tr>
+        <th>Rut</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Correo</th>
+        <th>Fecha de nacimiento</th>
+        <th>Teléfono</th>
+        <th>País</th>
+        <th>Nivel educacional</th>
+        <th>Opciones</th>
+    </tr>
+    {% for fila in listado %}
+    <tr>
+        <td>{{fila.rut}}</td>
+        <td>{{fila.nombre}}</td>
+        <td>{{fila.apellido}}</td>
+        <td>{{fila.correo}}</td>
+        <td>{{fila.fechaNac}}</td>
+        <td>{{fila.telefono}}</td>
+        <td>{{fila.pais}}</td>
+        <td>{{fila.nvledu}}</td>
+        <td>
+
+    <a href="{% url 'modificarusuario' fila.rut %}" class="btn btn-outline-dark">Modificar</a>
+    <a href="{% url 'eliminarusuario' fila.rut %}" class="btn btn-outline-danger">Eliminar</a>
+
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<h3>No hay usuarios registrados</h3>
+{% endif %}
+
+{% endblock %}

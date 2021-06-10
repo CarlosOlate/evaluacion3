@@ -1,0 +1,48 @@
+{% extends 'plantillaBase.html' %} 
+{% block titulo %} 
+{{ 'Productos' }}
+<hr>
+<h4>Productos registrados en e-Commerse:</h4> 
+<br>
+Agregar un producto: <a href="{% url 'formproductos' %}" class="btn btn-outline-primary">Agregar</a>
+<br>
+{%endblock%} 
+{% block contenido %} 
+{% if listado %}
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Código de barra</th>
+        <th>Descripción</th>
+        <th>$ costo</th>
+        <th>$ venta</th>
+        <th>Marca</th>
+        <th>Categoria</th>
+        <th>Opciones</th>
+    </tr>
+    {% for fila in listado %}
+    <tr>
+        <td>{{fila.id}}</td>
+        <td>{{fila.codigoBarra}}</td>
+        <td>{{fila.descripcion}}</td>
+        <td>{{fila.precioCosto}}</td>
+        <td>{{fila.precioVenta}}</td>
+        <td>{{fila.marca}}</td>
+        <td>{{fila.categoria}}</td>
+        <td>
+ 
+        <a href="{% url 'modificarproducto' fila.id %}" class="btn btn-outline-dark">Modificar</a>
+        <a href="{% url 'eliminarproducto' fila.id %}" class="btn btn-outline-danger">Eliminar</a>
+
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<h3>no hay productos disponibles</h3>
+{% endif %} 
+
+
+
+{% endblock %}
