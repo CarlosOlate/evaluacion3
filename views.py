@@ -31,24 +31,6 @@ def formproductos(request):
         producto.save()
     return render(request, 'formproductos.html', contexto)
 
-def regProductos(request):
-    alert = {
-        "txtId": request.GET.get('txtId', ''),
-    }
-
-    if request.method == 'POST':
-        txtId = request.POST.get('txtId', '')
-        if Producto.objects.filter(txtId = request.POST['txtId']).exists():
-            alert['txtId'] = "Codigo ya existe"
-        else:
-            producto = ProductoForm(request.POST)
-            producto.save()
-            alert['txtId'] = "Producto Registrado"
-
-    return render(request, 'formproductos.html', alert)
-
-
-
 
 def formusuario(request):
     contexto = { 'form' : UsuarioForm }
