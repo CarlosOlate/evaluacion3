@@ -1,0 +1,35 @@
+{% extends "plantillaBase.html" %} 
+{% block titulo %} 
+    {{ 'Registrar nuevo producto' }}
+    <hr>
+{% endblock %} 
+{% block contenido %} 
+  
+<form method="POST" class="post-form" enctype="multipart/form-data">  
+    {% csrf_token %}
+    
+    {% if txtId %}
+    <div class="alert alert-danger alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        {{ txtId }}
+    </div>
+    <br>
+    {% endif %}
+
+    <div class="row justify-content-center">
+        <div class="col-6">
+    <div class="form-group">
+        <table class="table">
+            {{ form.as_table }}
+        </table>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <input type="submit" name="btnRegistrar" class="btn btn-outline-success" value="Registrar">
+            <a href="{% url 'nuevosproductos' %}"class="btn btn-outline-info">Ver Registros</a>
+        </div>
+    </div>
+</form>
+
+{% endblock%}
